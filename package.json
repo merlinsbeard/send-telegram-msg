@@ -1,0 +1,16 @@
+{
+  "name": "send-telegram-msg",
+  "version": "1.0.3",
+  "description": "Send telegram message on a specific channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "repository": "github:merlinsbeard/send-telegram-msg"
+}
