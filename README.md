@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/send-telegram-msg.svg)](https://badge.fury.io/js/send-telegram-msg)
+
 # Send Telegram Message
 
 Sends a telegram message to a specific channel using bot
