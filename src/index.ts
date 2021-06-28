@@ -1,19 +1,25 @@
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
-DEFAULT_TELEGRAM_API_URL = "https://api.telegram.org/";
+const DEFAULT_TELEGRAM_API_URL = "https://api.telegram.org/";
 
-const bot = (token, apiUrl = DEFAULT_TELEGRAM_API_URL) => {
+export interface SendMessage {
+  chatId: string;
+  message: string;
+  parseMethod?: string;
+}
+
+function bot(token: string, apiUrl = DEFAULT_TELEGRAM_API_URL) {
   const botUrl = `${apiUrl}bot${token}`;
-  const methodUrl = (endpoint) => {
+  const methodUrl = (endpoint: string) => {
     return `${botUrl}/${endpoint}`;
   };
 
-  const sendMessage = async ({ chatId, message, parse_method = undefined }) => {
+  const sendMessage = async ({ chatId, message, parseMethod }: SendMessage) => {
     const url = methodUrl("sendMessage");
     const body = {
       chat_id: chatId,
       text: message,
-      parse_mode: parse_method,
+      parse_mode: parseMethod,
     };
     const res = await fetch(url, {
       method: "post",
@@ -32,6 +38,6 @@ const bot = (token, apiUrl = DEFAULT_TELEGRAM_API_URL) => {
     sendMessage,
     getUpdate,
   };
-};
+}
 
-module.exports = bot;
+export default bot;
